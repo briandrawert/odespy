@@ -11,20 +11,37 @@ and then adding "spy" as in the English word *spy*.
 
 ### How do I install Odespy?
 
-#### Pip
 
-Odespy requires Python version 2.7.  The simplest procedure for
-installing Odespy is to use `pip`:
+Odespy works with Python 2.7, and Python 3 (tested with v3.6). 
+
+<!--
+#### Pip
+The simplest procedure for installing Odespy is to use `pip`:
 
 
 ```
 Terminal> sudo pip install -e git+https://github.com/hplgit/odespy.git#egg=odespy
 ```
+commented out this section as it does not work currently
+-->
+
+
 
 #### Clone/fork repo
 
-Alternatively, you can check out this repo and run `setup.py`:
+You can check out this repo and run `setup.py`:
 
+
+##### For Python 3:
+
+```
+Terminal> git clone --single-branch -b python3 https://github.com/briandrawert/odespy.git
+Terminal> cd odespy
+Terminal> sudo python setup.py install
+```
+
+
+##### For Python 2:
 
 ```
 Terminal> git clone git@github.com:hplgit/odespy.git
