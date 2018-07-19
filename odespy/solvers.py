@@ -1,4 +1,5 @@
 # Authors: Liwei Wang, Hans Petter Langtangen
+from __future__ import print_function
 
 '''
 This module contains the base class ``Solver``
