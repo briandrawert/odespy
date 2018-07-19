@@ -929,10 +929,10 @@ class Solver:
         if with_f and hasattr(self, 'users_f'):
             if not hasattr(self.users_f, '__name__'):     # class instance?
                 f_name = self.users_f.__class__.__name__
-	    else:    # Ordinary functions
+            else:    # Ordinary functions
                 f_name = self.users_f.__name__
-	        if f_name == '<lambda>':   # lambda function
-	  	    f_name = 'lambda u, t: ...'
+                if f_name == '<lambda>':   # lambda function
+                    f_name = 'lambda u, t: ...'
             args.append('f=%s' % f_name)
 
         # form all parameters
@@ -958,10 +958,10 @@ class Solver:
         if hasattr(self, 'users_jac'):
             if hasattr(self.users_jac, '__name__'):     # plain function?
                 f_name = self.users_jac.__name__
-	        if f_name == '<lambda>':   # lambda function
-	  	    #f_name = 'lambda u, t: ...'
-	  	    f_name = 'lambda'
-	    else:                                       # class instance
+                if f_name == '<lambda>':   # lambda function
+                    #f_name = 'lambda u, t: ...'
+                    f_name = 'lambda'
+            else:                                       # class instance
                 f_name = self.users_jac.__class__.__name__
             args.append('jac=%s' % f_name)
 
@@ -1502,7 +1502,7 @@ class RK2(Solver):
         dt = t[n+1] - t[n]
         K1 = dt*f(u[n], t[n])
         K2 = dt*f(u[n] + 0.5*K1, t[n] + 0.5*dt)
-	u_new = u[n] + K2
+        u_new = u[n] + K2
         return u_new
 
 
@@ -2900,10 +2900,11 @@ class odelab(Adaptive):
     _optional_parameters = Adaptive._optional_parameters + \
         ['jac', 'jac_args', 'jac_kwargs', ]
 
-    solvers = 'ExplicitEuler ExplicitTrapezoidal ImplicitEuler RungeKutta34 RungeKutta4 SymplecticEuler ImplicitEuler LDIRK343 LobattoIIIA LobattoIIIB LobattoIIIC LobattoIIICs LobattoIIID MultiRKDAE RKDAE RadauIIA RungeKutta Spark Spark2 Spark3 Spark4 AdamsBashforth AdamsBashforth1 AdamsBashforth2 AdamsBashforth2e Butcher Butcher1 Butcher3 ExplicitGeneralLinear GeneralLinear Heun Kutta Kutta38 Kutta4 McLachlan NonHolonomicEnergy NonHolonomicEnergy0 NonHolonomicEnergyEMP NonHolonomicLeapFrog SymplecticEuler ABLawson ABLawson2 ABLawson3 ABLawson4 ABNorset4 Exponential GenLawson45 HochOst4 Lawson4 LawsonEuler Phi Polynomial RKMK4T'.split()
+    #solvers = 'ExplicitEuler ExplicitTrapezoidal ImplicitEuler RungeKutta34 RungeKutta4 SymplecticEuler ImplicitEuler LDIRK343 LobattoIIIA LobattoIIIB LobattoIIIC LobattoIIICs LobattoIIID MultiRKDAE RKDAE RadauIIA RungeKutta Spark Spark2 Spark3 Spark4 AdamsBashforth AdamsBashforth1 AdamsBashforth2 AdamsBashforth2e Butcher Butcher1 Butcher3 ExplicitGeneralLinear GeneralLinear Heun Kutta Kutta38 Kutta4 McLachlan NonHolonomicEnergy NonHolonomicEnergy0 NonHolonomicEnergyEMP NonHolonomicLeapFrog SymplecticEuler ABLawson ABLawson2 ABLawson3 ABLawson4 ABNorset4 Exponential GenLawson45 HochOst4 Lawson4 LawsonEuler Phi Polynomial RKMK4T'.split()
     DAE_solvers = 'SymplicticEuler MultiRKDAE RKDAE Spark Spark2 Spark3 Spark4'.split()
-    not_valid = 'SymplecticEuler LDIRK343 LobattoIIIA LobattoIIIB LobattoIIIC LobattoIIICs LobattoIIID MultiRKDAE RKDAE RadauIIA RungeKutta Spark Spark2 Spark3 Spark4 AdamsBashforth AdamsBashforth2 AdamsBashforth2e Butcher Butcher1 Butcher3 ExplicitGeneralLinear GeneralLinear Kutta McLachlan NonHolonomicEnergy NonHolonomicEnergy0 NonHolonomicEnergyEMP NonHolonomicLeapFrog SymplecticEuler ABLawson ABLawson2 ABLawson3 ABLawson4 ABNorset4 Exponential GenLawson45 HochOst4 Lawson4 LawsonEuler Phi Polynomial RKMK4T'.split()
-    solvers = [solver for solver in solvers if not solver in not_valid]
+    #not_valid = 'SymplecticEuler LDIRK343 LobattoIIIA LobattoIIIB LobattoIIIC LobattoIIICs LobattoIIID MultiRKDAE RKDAE RadauIIA RungeKutta Spark Spark2 Spark3 Spark4 AdamsBashforth AdamsBashforth2 AdamsBashforth2e Butcher Butcher1 Butcher3 ExplicitGeneralLinear GeneralLinear Kutta McLachlan NonHolonomicEnergy NonHolonomicEnergy0 NonHolonomicEnergyEMP NonHolonomicLeapFrog SymplecticEuler ABLawson ABLawson2 ABLawson3 ABLawson4 ABNorset4 Exponential GenLawson45 HochOst4 Lawson4 LawsonEuler Phi Polynomial RKMK4T'.split()
+    #solvers = [solver for solver in solvers if solver not in not_valid]
+    solvers = ['ExplicitEuler', 'ExplicitTrapezoidal', 'ImplicitEuler', 'RungeKutta34', 'RungeKutta4', 'ImplicitEuler', 'AdamsBashforth1', 'Heun', 'Kutta38', 'Kutta4']
 
     __doc__ = __doc__ % (str(solvers)[1:-1])
 
